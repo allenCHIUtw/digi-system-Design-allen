@@ -5,11 +5,12 @@ output [7:0] out;
 wire [8:0]carry_out;
 
 /*Write your code here*/
-genvar  idx;
+assign carry_out[0]=1'b0;
+genvar idx;
 generate
 for(idx=0; idx<8; idx=idx+1)
  begin
-    full_adder fa(,,out[idx],);
+    full_adder fa(.xb(x[idx]),.yb(y[idx]),.cin(carry_out[idx]),.sum(out[idx]),.cout(carry_out[idx+1]));
  end
 endgenerate
 
