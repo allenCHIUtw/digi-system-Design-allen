@@ -39,8 +39,18 @@ module alu_assign(
         assign out=temp[7:0];
         assign carry=temp[8];
        end
-       
-       EQ: out =(x==y)?8'b1:8'b0;
+       BITAND: assign out =x & y;
+       BITOR:  assign out =x | y;
+       BITNOT: assign out =~x;
+       BITXOR: assign out =x^y;
+       BITNOR: assign out =~(x | y);
+       SRL:    assign out =;
+       SRR:    assign out =;
+       SRA:    assign out =;
+       RL:     assign out =;
+       RR:     assign out =;
+       EQ:     assign out =(x==y)?8'b1:8'b0;
+       default assign out =8'd0;
        
     endcase
     

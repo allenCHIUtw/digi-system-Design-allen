@@ -1,3 +1,4 @@
+`include "2-Reg"
 module simple_calculator(
     Clk,
     WEN,
