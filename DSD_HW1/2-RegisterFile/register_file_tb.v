@@ -22,6 +22,11 @@ module register_file_tb;
     );
 
     // write your test pattern here
-
-
+     initial begin
+        $fsdbDumpfile("register_file.fsdb");
+       $fsdbDumpvars;
+     end
+     initial begin
+     
+     end
 endmodule

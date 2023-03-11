@@ -21,7 +21,7 @@ module alu_assign(
     parameter  BITNOT =4'b0100;
     parameter  BITXOR =4'b0101;
     parameter  BITNOR =4'b0110;
-    parameter  SRL    =4'b0111;
+    parameter  SLL    =4'b0111;
     parameter  SRL    =4'b1000;
     parameter  SRA    =4'b1001;
     parameter  RL     =4'b1010;
@@ -44,11 +44,11 @@ module alu_assign(
        BITNOT: assign out =~x;
        BITXOR: assign out =x^y;
        BITNOR: assign out =~(x | y);
-       SRL:    assign out =;
-       SRR:    assign out =;
-       SRA:    assign out =;
-       RL:     assign out =;
-       RR:     assign out =;
+       SLL:    assign out ={x[7],x[7:1]};
+       SRL:    assign out ={x[6:0],x[7]};
+       SRA:    assign out ={x[0],x[7:1]};
+       RL:     assign out ={x[6:0],x[7]};
+       RR:     assign out ={x[0],x[7:1]};
        EQ:     assign out =(x==y)?8'b1:8'b0;
        default assign out =8'd0;
        
