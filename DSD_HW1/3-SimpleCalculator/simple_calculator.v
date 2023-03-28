@@ -24,14 +24,34 @@ module simple_calculator(
     output       Carry;
 
 // declaration of wire/reg
-  reg [7:0]AlU_out ,MUX_out,REG_X_read,REG_Y_read;
+  wire [7:0] ALU_out ,REG_X_read,REG_Y_read;
+  wire [7:0] MUX_out ;
 
-// submodule instantiation
+// submodule instantiation.
     
-      register_file rg(Clk,WEN,RW,AlU_out,RX,RY,busX,busY);
-       assign MUX_out=(Sel)?AlU_out:DataIn;
-      alu_always ALU(ctrl,MUX_out,REG_Y_read,.carry(Carry),ALU_out );
-   
+      register_file RGF(.Clk(Clk),.WEN(WEN),
+                       .RW(RW),.busW(ALU_out),.RX(RX),
+                       .RY(RY),.busX(REG_X_read),.busY(REG_Y_read));
+      assign MUX_out   =   (Sel == 1'b0) ? DataIn : REG_X_read;
+      assign busY =REG_Y_read;
+      alu_always ALU(.ctrl(Ctrl),.x(MUX_out),.y(REG_Y_read),.carry(Carry),.out(ALU_out) );
+//     alu_assign(
+//     ctrl,
+//     x,
+//     y,
+//     carry,
+//     out  
+// );
 
+// register_file(
+//     Clk  ,
+//     WEN  ,
+//     RW   ,
+//     busW ,
+//     RX   ,
+//     RY   ,
+//     busX ,
+//     busY
+// );
 
 endmodule
