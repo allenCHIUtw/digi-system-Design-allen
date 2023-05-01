@@ -8,7 +8,7 @@ Source:
     >	source /usr/cad/synopsys/CIC/synthesis.cshrc
 
 RTL simulation:
-- RV32I:
+- RV32I:  //yes 
     > vcs RISCV_tb.v +define+RV32I+RTL -full64 -R -debug_access+all +v2k
 - RV32IC:
     > vcs RISCV_tb.v +define+RV32IC+RTL -full64 -R -debug_access+all +v2k

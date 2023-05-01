@@ -97,7 +97,7 @@ module RISCV_tb;
     // Initialize the data memory
     initial begin
         $fsdbDumpfile("RISCV.fsdb");            
-        $fsdbDumpvars(0,RISCV_tb,"+mda");
+        $fsdbDumpvars(10,RISCV_tb,"+mda");
 
         $display("------------------------------------------------------------\n");
         $display("START!!! Simulation Start .....\n");
